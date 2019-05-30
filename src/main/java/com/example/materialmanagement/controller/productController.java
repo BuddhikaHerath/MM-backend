@@ -21,12 +21,12 @@ public class productController {
     productRepository productRepository;
 
     @GetMapping("/product")
-    public List<product> getAllSupplier(){
+    public List<product> getAllSupplier() {
         return productRepository.findAll();
     }
 
     @PostMapping("/product")
-    public product createProduct(@Valid @RequestBody product product){
+    public product createProduct(@Valid @RequestBody product product) {
         return productRepository.save(product);
     }
 
@@ -37,10 +37,10 @@ public class productController {
     }
 
     @PutMapping("/product/{id}")
-    public product updateProduct(@PathVariable(value = "id")Long productId,
-                               @Valid @RequestBody Supplier productDetails){
+    public product updateProduct(@PathVariable(value = "id") Long productId,
+                                 @Valid @RequestBody Supplier productDetails) {
         product product = productRepository.findById(productId)
-                .orElseThrow(()-> new ResourceNotFoundException("product", "id", productId));
+                .orElseThrow(() -> new ResourceNotFoundException("product", "id", productId));
 
 //        supplier.setProductName(supplierDetails.getProductName());
 //        supplier.setAddress(supplierDetails.getAddress());
